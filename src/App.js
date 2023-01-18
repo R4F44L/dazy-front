@@ -1,25 +1,18 @@
 import logo from './logo.svg';
 import './App.css';
+import { FetchDB, SelectDBWrapper, Table } from './table/table';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  return <>
+    <SelectDBWrapper>
+      {({ db }) => <FetchDB db={db}>
+        {({ data }) =>
+          <Table data={data} />
+        }
+      </FetchDB>}
+    </SelectDBWrapper>
+  </>
+
 }
 
 export default App;
